@@ -1,10 +1,12 @@
 # Bits events over PubSub
-Using the Twitch PubSub system (TPS), you can listen to Bits events occurring in a channel by subscribing to the Bits event topic. When connecting, you'll need to provide authentication via an OAuth token from the channel where you're 
+Using the Twitch PubSub system (TPS), you can listen to Bits events occurring in a channel by subscribing to the Bits event topic. When connecting, you'll need to provide authentication via an OAuth token from the channel where you're
 listening. For general information about TPS (including rate limits and best practices), check out the [Twitch PubSub System documentation](https://github.com/justintv/Twitch-API/tree/master/PubSub).
 
 ## Subscribing to a Bits topic
-You can subscribe to a Bits topic for a channel by sending a simple JSON message. The topic has a specific format: `channel-bitsevents.<channel_id>`. When 
-subscribing to the Bits topic for a channel, you must supply an OAuth token linked to the channel_id for the topic. Any scope will suffice for subscribing. 
+You can subscribe to a Bits topic for a channel by sending a simple JSON message. The topic has a specific format: `channel-bitsevents.<channel_id>`.
+When subscribing to the Bits topic for a channel, you must supply an OAuth token linked to the `channel_id` for the topic. Any scope will suffice for subscribing.
+
+Note: `<channel_id>` is NOT the username but the `_id` from the [Kraken channels response](https://github.com/justintv/Twitch-API/blob/master/v3_resources/channels.md#get-channelschannel).
 
 In full, you would send a request that looks like the following:
 
@@ -24,11 +26,11 @@ After your initial request, you'll receive a response message with the error if 
 {
   "type": "RESPONSE",
   "nonce": "...",
-  "error": "..." 
+  "error": "..."
 }
 ```
 
-The `nonce` field will match the request `nonce`. The `error` field will be an empty string if there is no error. If there is an error, it can be one of 
+The `nonce` field will match the request `nonce`. The `error` field will be an empty string if there is no error. If there is an error, it can be one of
 ERR_BADMESSAGE, ERR_BADAUTH, ERR_SERVER, ERR_BADTOPIC.
 
 ## Receiving a Bits event message
@@ -49,7 +51,7 @@ When a message for your subscription is published, you will receive a message co
             "bits_used": 120,
             "total_bits_used": 620,
             "context": "cheer"
-            }
+        }
     }
 }
 ```

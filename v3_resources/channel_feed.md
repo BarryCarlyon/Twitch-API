@@ -88,6 +88,10 @@ curl -H 'Accept: application/vnd.twitchtv.v3+json' -H 'Authorization: OAuth <acc
 }
 ```
 
+### Errors
+
+`404 Forbidden` if `:channel` has posts disabled
+
 ## `POST /feed/:channel/posts`
 
 Create a post for a channel's feed.
