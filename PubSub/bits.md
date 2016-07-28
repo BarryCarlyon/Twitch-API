@@ -30,8 +30,7 @@ After your initial request, you'll receive a response message with the error if 
 }
 ```
 
-The `nonce` field will match the request `nonce`. The `error` field will be an empty string if there is no error. If there is an error, it can be one of
-ERR_BADMESSAGE, ERR_BADAUTH, ERR_SERVER, ERR_BADTOPIC.
+The `nonce` field will match the request `nonce`. The `error` field will be an empty string if there is no error. If there is an error, it can be one of ERR_BADMESSAGE, ERR_BADAUTH, ERR_SERVER, ERR_BADTOPIC.
 
 ## Receiving a Bits event message
 When a message for your subscription is published, you will receive a message containing the applicable data. The message will look like the following:
